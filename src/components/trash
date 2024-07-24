@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from 'react';
+
+const Pomodoro = () => {
+    // get current time in useState hooks
+    const [currentTime, setCurrentTime] = useState(new Date());
+    const [deadline, setDeadline] = useState(() => {
+        const oneHourFromNow = new Date();
+        oneHourFromNow.setHours(oneHourFromNow.getHours() + 1);
+        return oneHourFromNow;
+    });
+    const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
+
+    function calculateTimeRemaining() {
+        const now = new Date();
+        const remaining = deadline.getTime() - now.getTime();
+        return Math.max(0, remaining);
+    }
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(new Date());
+            setTimeRemaining(calculateTimeRemaining());
+        }, 1000);
+
+        return () => {
+            clearInterval(timer);
+        };
+    });
+
+    function formatTime(date) {
+        return date.toLocaleTimeString();
+    }
+
+    function formatTimeRemaining(remaining) {
+        const minutes = Math.floor(remaining / (1000 * 60));
+        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+        return `${minutes}m ${seconds}s`;
+    }
+
+    return (
+        <div>
+            <div>
+                Current Time: {formatTime(currentTime)}
+            </div>
+            <div>
+                Deadline: {formatTime(deadline)}
+            </div>
+            <div>
+                Time Remaining: {formatTimeRemaining(timeRemaining)}
+            </div>
+        </div>
+    );
+};
+
+export default Pomodoro;
