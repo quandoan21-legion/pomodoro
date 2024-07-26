@@ -3,11 +3,16 @@ import History from "./components/History";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Settings from "./components/Settings";
 import Pomodoro from "./components/Pomodoro";
-import Student from "./components/Student";
+import Login from "./components/Login";
+import Redirect from "react-router-dom/es/Redirect";
+import Register from "./components/Register";
+import {createContext, useContext, useState} from "react";
 
 
 function App() {
-    return (
+    const [isLogin, setIsLogin] = useState(false);
+    const IsLoginContext = createContext();
+    return (<IsLoginContext.Provider value={isLogin}>
         <Router>
             <div className="App">
                 <NavBar/>
@@ -17,7 +22,7 @@ function App() {
                             <History/>
                         </Route>
                         <Route path="/settings">
-                            <Settings />
+                            <Settings/>
                         </Route>
                         <Route path="/feedback">
                             <History/>
@@ -25,14 +30,19 @@ function App() {
                         <Route path="/pomodoro">
                             <Pomodoro/>
                         </Route>
-                        <Route path="/student">
-                            <Student />
+                        <Route path="/login">
+                            <Login/>
+                        </Route>
+                        <Route path="/register">
+                            <Register/>
                         </Route>
                     </Switch>
                 </div>
             </div>
         </Router>
-    );
+    </IsLoginContext.Provider>);
 }
 
+
 export default App;
+

@@ -24,11 +24,12 @@ function NavBar() {
                 <h1>Pomodoro Assistance</h1>
             </div>
             <div className="links">
-                <Link id="settings" onClick={activeNavItem} to="/settings">Settings</Link>
+                {/*<Link id="settings" onClick={activeNavItem} to="/settings">Settings</Link>*/}
                 <Link id="history" onClick={activeNavItem} to="/">History</Link>
                 <Link id="pomodoro" onClick={activeNavItem} to="/pomodoro">Pomodoro</Link>
-                <Link id="feedback" onClick={activeNavItem} to="#">Feedback</Link>
-                <Link id="feedback" onClick={activeNavItem} to="/student">Students</Link>
+                {/*<Link id="feedback" onClick={activeNavItem} to="#">Feedback</Link>*/}
+                <Link id="feedback" onClick={activeNavItem} to="/login">Login</Link>
+                <Link id="settings" onClick={activeNavItem} to="/register">Register</Link>
             </div>
         </nav>
     );
