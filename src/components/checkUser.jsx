@@ -1,17 +1,8 @@
-import {db} from "../db/db";
-import {useContext} from "react";
+import { db } from "../db/db";
 
-async function CheckUser(props) {
-    let userNameIndex = document.getElementById("userName").value;
-    let passwordIndex = document.getElementById("password").value;
-
-    const table = await db.users.where({userName: userNameIndex, password: passwordIndex}).toArray();
-    if (table !== null) {
-        console.log("logged in")
-    }else {
-        console.log("lmaos")
-    }
-
+async function checkUser(userName, password) {
+    const table = await db.users.where({ userName, password }).toArray();
+    return table.length > 0;
 }
 
-export default CheckUser
+export default checkUser;
