@@ -9,7 +9,36 @@ import Register from "./components/Register";
 import {createContext, useContext, useState} from "react";
 
 
+export const IsLoginContext = createContext({
+    isLoggedin: false,
+    setLoggedin: () => {},
+    setLoggedout: () => {},
+});
+
 function App() {
+
+
+
+
+    const [isLoggedin, setLoggedin] = useState(false);
+
+    function handleLogin() {
+        setLoggedin((state) => !state);
+    }
+
+    function handleLogout() {
+        setLoggedin(false);
+    }
+
+    const ctxValue = {
+        isLoggedin: isLoggedin,
+        setLoggedin: handleLogin,
+        setLoggedout: handleLogout,
+    };
+
+
+    return (<IsLoginContext.Provider value={ctxValue}>
+
     const [isLogin, setIsLogin] = useState(false);
     const IsLoginContext = createContext();
     return (<IsLoginContext.Provider value={isLogin}>
@@ -22,7 +51,7 @@ function App() {
                             <History/>
                         </Route>
                         <Route path="/settings">
-                            <Settings/>
+                            <Settings />
                         </Route>
                         <Route path="/feedback">
                             <History/>
@@ -30,19 +59,14 @@ function App() {
                         <Route path="/pomodoro">
                             <Pomodoro/>
                         </Route>
-                        <Route path="/login">
-                            <Login/>
-                        </Route>
-                        <Route path="/register">
-                            <Register/>
+                        <Route path="/student">
+                            <Student />
                         </Route>
                     </Switch>
                 </div>
             </div>
         </Router>
-    </IsLoginContext.Provider>);
+    );
 }
 
-
 export default App;
-
