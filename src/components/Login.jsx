@@ -5,15 +5,17 @@ import checkUser from "./checkUser"; // Ensure this function handles database in
 function Login() {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    const { setLoggedin, isLoggedin } = useContext(IsLoginContext);
+    const context = useContext(IsLoginContext);
 
     async function handleSubmit(event) {
         event.preventDefault();
         const isUserValid = await checkUser(userName, password);
-        if (isUserValid) {
-            setLoggedin();
-            alert(isLoggedin);
+        let ID = isUserValid[0].id;
+        if (isUserValid.length > 0) {
+            context.setLoggedin();
+            context.setUserID(ID);
             alert("Login Successfully");
+
         } else {
             alert("Invalid username or password");
         }

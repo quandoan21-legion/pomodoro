@@ -11,12 +11,14 @@ import Register from "./components/Register";
 
 export const IsLoginContext = createContext({
     isLoggedin: false,
+    userID: -1,
     setLoggedin: () => {},
     setLoggedout: () => {},
 });
 
 function App() {
     const [isLoggedin, setLoggedin] = useState(false);
+    const [userID, setUserID] = useState(-1);
 
     function handleLogin() {
         setLoggedin(true);
@@ -25,8 +27,14 @@ function App() {
         setLoggedin(false);
     }
 
+    function handleUserID(id){
+        setUserID(id)
+    }
+
     const ctxValue = {
         isLoggedin: isLoggedin,
+        userID: userID,
+        setUserID: handleUserID,
         setLoggedin: handleLogin,
         setLoggedout: handleLogout,
     };

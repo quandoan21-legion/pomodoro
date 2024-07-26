@@ -1,9 +1,13 @@
 import {db} from "../db/db";
 import {useLiveQuery} from "dexie-react-hooks";
+import {IsLoginContext} from "../App";
+import {useContext} from "react";
 
 function History(props) {
 
-    const pomodoroObj = useLiveQuery(() => db.pomodoros.toArray())
+    const userInfo = useContext(IsLoginContext);
+
+    const pomodoroObj = useLiveQuery(() => db.pomodoros.where({userID: userInfo.userID}).toArray())
     const userObj = useLiveQuery(() => db.users.toArray())
 
     const beautifier = (timeStamp) =>{

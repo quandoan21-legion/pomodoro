@@ -1,7 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import addPomodoro from './addPomodoro';
+import {IsLoginContext} from "../App";
+
 
 const Pomodoro = () => {
+    const userInfo = useContext(IsLoginContext)
     const [h, setH] = useState(0);
     const [m, setM] = useState(0);
     const [s, setS] = useState(0);
@@ -24,7 +27,7 @@ const Pomodoro = () => {
             clearInterval(intervalRef.current);
             setIsStarted(false);
             end = new Date()
-            addPomodoro(0, start, end)
+            addPomodoro(userInfo.userID, start, end)
             setCountdownClock("00:00:00");
             return;
         }
