@@ -3,17 +3,27 @@ import addUser from "./addUser";
 function Register() {
 
     return (
-        <div>
+        <div className="form-container">
             <h1>Register</h1>
-            <form action="#">
-                <input type="text" id="userName" placeholder="Enter your username" required/>
+            <form onSubmit={addUser} className="login-register-form">
+                <input
+                    type="text"
+                    id="userName"
+
+                    placeholder="Enter your username"
+                    required
+                />
                 <br/>
-                <input type="password" id="password" placeholder="Enter your password" required/>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                />
                 <br/>
-                <button onClick={addUser}>Register</button>
+                <button className={"submit-button"} type={"submit"}>Register</button>
             </form>
-        </div>
-    );
+        </div>);
 }
 
 export default Register;

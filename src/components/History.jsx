@@ -17,16 +17,14 @@ function History(props) {
     console.log(pomodoroObj)
     console.log(userObj)
     return (
-        <ul>
+        <ul id={"history-table"}>
                 <table id={"history-table"}>
                     <tr>
-                        <th>UserID</th>
                         <th>Start Time</th>
                         <th>End Time</th>
                     </tr>
             {pomodoroObj?.map((pomodoro) => (
                     <tr>
-                        <td>{pomodoro.userID}</td>
                         <td>{beautifier(pomodoro.start.getHours())}:{beautifier(pomodoro.start.getMinutes())}:{beautifier(pomodoro.start.getSeconds())}</td>
                         <td>{beautifier(pomodoro.end.getHours())}:{beautifier(pomodoro.end.getMinutes())}:{beautifier(pomodoro.end.getSeconds())}</td>
                     </tr>

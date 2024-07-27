@@ -88,10 +88,11 @@ const Pomodoro = () => {
         }
     };
 
-    return (
-        <div id="countdown">
-            <div id="countdown-clock">{countdownClock}</div>
-            <div id="input-wrapper">
+    return (<div id="countdown">
+        <div id="countdown-clock">{countdownClock}</div>
+        <div id="input-wrapper">
+            <div className={"input"}>
+                <label htmlFor="userName">Hours</label>
                 <input
                     type="text"
                     placeholder="Hour"
@@ -99,6 +100,9 @@ const Pomodoro = () => {
                     value={h}
                     onChange={validateInput}
                 />
+            </div>
+            <div className={"input"}>
+                <label htmlFor="userName">Minutes</label>
                 <input
                     type="text"
                     placeholder="Minute"
@@ -106,6 +110,9 @@ const Pomodoro = () => {
                     value={m}
                     onChange={validateInput}
                 />
+            </div>
+            <div className={"input"}>
+                <label htmlFor="userName">Seconds</label>
                 <input
                     type="text"
                     placeholder="Second"
@@ -114,12 +121,12 @@ const Pomodoro = () => {
                     onChange={validateInput}
                 />
             </div>
-            <div className="button-wrapper">
-                <div className="countdown-button" id="start-button" onClick={startTime}>Start</div>
-                <div className="countdown-button" id="pause-button" onClick={pauseTime}>Pause</div>
-            </div>
         </div>
-    );
+        <div className="button-wrapper">
+            <div className="countdown-button" id="start-button" onClick={startTime}>Start</div>
+            <div className="countdown-button" id="pause-button" onClick={pauseTime}>Pause</div>
+        </div>
+    </div>);
 };
 
 export default Pomodoro;

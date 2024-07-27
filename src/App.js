@@ -7,6 +7,7 @@ import Pomodoro from "./components/Pomodoro";
 import {createContext, useState} from "react";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import ChangePassword from "./components/ChangePassword";
 
 
 export const IsLoginContext = createContext({
@@ -62,6 +63,9 @@ function App() {
                         </Route>
                         <Route path="/register">
                             <Register/>
+                        </Route>
+                        <Route path="/change-password">
+                            <ChangePassword/>
                         </Route>
                     </Switch>
                 </div>

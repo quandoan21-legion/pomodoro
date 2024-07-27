@@ -34,6 +34,7 @@ function NavBar() {
             <Link id="pomodoro" onClick={activeNavItem} to="/pomodoro">Pomodoro</Link>
             <Link id="feedback" onClick={activeNavItem} to="/login">Login</Link>
             <Link id="settings" onClick={activeNavItem} to="/register">Register</Link>
+            <Link id="settings" onClick={activeNavItem} to="/change-password">Change Password</Link>
         </div>
     </nav>);
 }
